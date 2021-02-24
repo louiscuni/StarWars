@@ -49,5 +49,5 @@ def update_pareto(list_p, possibility):
     return res
 
 
-l = [{'danger' : 4, 'fuel' : 1}, {'danger' : 1, 'fuel' : 2}, {'danger' : 7, 'fuel' : 4}, {'danger' : 3, 'fuel' : 5}, {'danger' : 5, 'fuel' : 7} ]
-print(build_pareto(l))
+# l = [{'danger' : 4, 'fuel' : 1}, {'danger' : 1, 'fuel' : 2}, {'danger' : 7, 'fuel' : 4}, {'danger' : 3, 'fuel' : 5}, {'danger' : 5, 'fuel' : 7} ]
+# print(build_pareto(l))

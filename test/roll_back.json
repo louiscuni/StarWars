@@ -8,39 +8,31 @@
         "day": 1
       },
       {
-        "planet": "Hoth",
+        "planet": "Dagobah",
         "day": 6
       },
       {
+        "planet": "Dagobah",
+        "day": 8
+      },
+      {
         "planet": "Hoth",
         "day": 8
       },
       {
-        "planet": "Dagobah",
+        "planet": "Endor",
         "day": 8
       },
       {
-        "planet": "Endor",
-        "day": 10
-      },
-      {
-        "planet": "Endor",
-        "day": 11
-      },
-      {
         "planet": "Tatooine",
-        "day": 15
+        "day": 16
       },
       {
         "planet": "Dagobah",
-        "day": 19
+        "day": 21
       },
       {
         "planet": "Dagobah",
-        "day": 20
-      },
-      {
-        "planet": "Endor",
         "day": 22
       }
     ]

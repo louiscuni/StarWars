@@ -7,7 +7,7 @@ vaisseau = read_file('millenium-falcon.json')
 path = Path.cwd()
 path = path.parent / 'test'
 
-tests = ['at_least_one_danger.json', 'no_danger.json', 'big_test1.json']
+tests = ['at_least_one_danger.json', 'no_danger.json', 'roll_back.json', 'big_test1.json']
 
 
 for t in tests:

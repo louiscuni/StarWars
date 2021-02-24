@@ -22,13 +22,13 @@ class falco_M_computer:
                 'Dagobah' : {},
                 'Hoth': {},
                 'Endor': {}}#a modifier
-        self.dico[self.vaisseau_data['departure']][0] = [{"fuel": 6, "danger": 0}]
+        self.dico[self.vaisseau_data['departure']][0] = [{"fuel": 6, "danger": 0, 'last_planet': [('Tatooine', 0)]}]
 
         for day in range(self.empire_data['countdown'] + 1):
             for planet in self.dico.keys():
-                if planet != 'Endor':#pas top, pas besoin d'update sur la derniere planete
+                if planet != 'Endor':# pas besoin d'update sur la derniere planete
                     actions = self.requetor.get_possible_action(planet)
-                    if day in self.dico[planet].keys():#virrable
+                    if day in self.dico[planet].keys():#check if it exist any possibility to be on this planet on this day
                         possibilities = build_pareto(self.dico[planet][day])
                         self.dico[planet][day] = possibilities
                         for p in possibilities:
@@ -41,20 +41,20 @@ class falco_M_computer:
 
     def update_dico(self, actions, old_state, current_info):
     #update dico with the possible actions in days
-        #action = (planet, dist)
+    #action = (planet, dist)
         planet = current_info[1]
         day = current_info[0]
         for a in actions:
             if a[0] == 'refuel':
-                new_state = { "fuel" : 6, "danger" : old_state["danger"] + self.danger(planet, day) }
+                new_state = { "fuel" : 6, "danger" : old_state["danger"] + self.danger(planet, day + 1), "last_planet" : old_state['last_planet'] + [(planet, day +1)] }
                 if day + 1 in self.dico[planet].keys():
                     self.dico[planet][day + 1].append( new_state ) 
                 else:
                     self.dico[planet][day + 1] =  [new_state]
             else:
                 if check_fuel(a, old_state) and self.check_countdown(a, day):#check if action is possible and if it will end in time
-                    new_state = { 'fuel' : old_state['fuel'] - a[1], "danger" : old_state["danger"] + self.danger(a[0], day)}
-                    if day + a[1] in self.dico[a[0]].keys():#virrable
+                    new_state = { 'fuel' : old_state['fuel'] - a[1], "danger" : old_state["danger"] + self.danger(a[0], day + a[1]), "last_planet" : old_state['last_planet'] + [(a[0], day + a[1])]}
+                    if day + a[1] in self.dico[a[0]].keys():
                         self.dico[a[0]][day + a[1]].append( new_state ) 
                     else : 
                         self.dico[a[0]][day + a[1]] = [new_state]
@@ -75,9 +75,11 @@ class falco_M_computer:
 
     def get_min_rencontre(self):
         endor = self.dico['Endor']
-        print(endor)
         min_r = 42000#pas ouf
+        #print(endor)
         for day in endor:
             if endor[day]['danger'] < min_r:
                 min_r = endor[day]['danger']
+            if endor[day]['danger'] == 0:
+                print(day, endor[day])
         return min_r
