@@ -18,15 +18,18 @@ class falco_M_computer:
 
     def build_dico(self):
     #build dico that represent all possible actions in the universe (the database)
-        self.dico = {'Tatooine':{},
-                'Dagobah' : {},
-                'Hoth': {},
-                'Endor': {}}#a modifier
-        self.dico[self.vaisseau_data['departure']][0] = [{"fuel": 6, "danger": 0, 'last_planet': [('Tatooine', 0)]}]
+        # self.dico = {'Tatooine':{},
+        #         'Dagobah' : {},
+        #         'Hoth': {},
+        #         'Endor': {}}#a modifier
+        planets = self.requetor.get_all_planets()
+        self.dico = tab_to_dico(planets)
+
+        self.dico[self.vaisseau_data['departure']][0] = [{"fuel": self.vaisseau_data['autonomy'], "danger": 0, 'last_planet': [(self.vaisseau_data['departure'], 0)] }]
 
         for day in range(self.empire_data['countdown'] + 1):
             for planet in self.dico.keys():
-                if planet != 'Endor':# pas besoin d'update sur la derniere planete
+                if planet != self.vaisseau_data['arrival']:# pas besoin d'update sur la derniere planete
                     actions = self.requetor.get_possible_action(planet)
                     if day in self.dico[planet].keys():#check if it exist any possibility to be on this planet on this day
                         possibilities = build_pareto(self.dico[planet][day])

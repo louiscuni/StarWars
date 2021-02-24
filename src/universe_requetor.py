@@ -17,17 +17,26 @@ class universe_requetor:
             print(self.cursor.fetchall())
 
     def get_possible_action(self, planet):
-        #print('destination possibles depuis ', planet)
+        #return a list of possible action [(destination, time_it_take)]
         planet_acces = []
         with self.connection:
             self.cursor.execute("SELECT DESTINATION, TRAVEL_TIME FROM routes WHERE ORIGIN=(:ORIGIN)", {'ORIGIN' : planet} )
             planet_acces += self.cursor.fetchall()
             self.cursor.execute("SELECT ORIGIN, TRAVEL_TIME FROM routes WHERE DESTINATION=(:DESTINATION)", {'DESTINATION' : planet} )
             planet_acces += self.cursor.fetchall()
-        #planet_acces = get_destinations(planet_acces, planet)
-        planet_acces += [('refuel', 0)]
-        #print(planet_acces)
+        planet_acces += [('refuel', 1)]
         return planet_acces
+
+    def get_all_planets(self):
+        #return a list of every planet in the db
+        res = []
+        with self.connection:
+            self.cursor.execute("""SELECT DESTINATION FROM routes
+                             UNION 
+                             SELECT ORIGIN FROM routes""" )
+            res += self.cursor.fetchall()
+        res = tabOfTuple_to_tab(res)
+        return res
 
     def db_ok():
         #check if db is good
