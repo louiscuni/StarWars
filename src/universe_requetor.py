@@ -38,6 +38,13 @@ class universe_requetor:
         res = tabOfTuple_to_tab(res)
         return res
 
+    def get_edges(self):
+        edges = []
+        with self.connection:
+            self.cursor.execute("SELECT * FROM routes")
+            edges += self.cursor.fetchall()
+        return edges
+
     def db_ok():
         #check if db is good
         return 0
