@@ -2,7 +2,7 @@ from flask import Flask, jsonify, render_template, request
 import json
 import ast
 from pathlib import Path
-import R2D2_CLI as r2d2
+import src.controller.controller as ctrl
 
 
 def get_path():
@@ -19,9 +19,8 @@ app = Flask(__name__, static_url_path='', template_folder=path_template)
 def moteur():
     data = request.args.get('data', type=str)
     data = ast.literal_eval(data)
-    res = r2d2.main(data)
+    res = ctrl.main(data)
     return jsonify(result=res)
-    #return json.dumps(data['bounty_hunters'])
 
 @app.route('/')
 def index():

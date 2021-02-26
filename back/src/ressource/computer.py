@@ -1,7 +1,7 @@
 import json
 import sqlite3 as sql
-from src.universe_requetor import *
-from src.utils import *
+from src.database.universe_requetor import *
+from src.ressource.utils import *
 from pathlib import Path
 import networkx as nx
 

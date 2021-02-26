@@ -1,6 +1,6 @@
 import sys
-from src.falcon_millenium_computer_back import *
-from src.utils import *
+from src.ressource.computer import *
+from src.ressource.utils import *
 
 def main():
     vaisseau = sys.argv[1]
