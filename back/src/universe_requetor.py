@@ -1,5 +1,5 @@
 import sqlite3 as sql
-from utils import *
+from src.utils import *
 
 class universe_requetor:
     table = ['routes']

@@ -1,9 +1,8 @@
 import json
 import sqlite3 as sql
-from universe_requetor import *
-from utils import *
+from src.universe_requetor import *
+from src.utils import *
 from pathlib import Path
-from falcon_millenium_computer_back import *
 import networkx as nx
 
 
