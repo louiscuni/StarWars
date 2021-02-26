@@ -1,0 +1,71 @@
+<!doctype html>
+<html class="no-js" lanf="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title> FirstApp</title>
+    </head>
+    <body>
+        <h1>
+            this is the very first js project by lc
+        </h1>
+        <script src="https://code.jquery.com/jquery-3.5.1.js"> </script>
+
+        <p><input type=file id=file-input size=5 name=data>
+        <span id=result>?</span>
+        <button href=# id="read-button">Read File</button>
+        <pre id="file_contents"> </pre>
+ 
+       <!-- <script type="module" src="{{ url_for('static', filename= 's1.js') }}"></script>-->
+
+
+        <script type="text/javascript">
+            $(function(){
+                document.querySelector("#read-button").addEventListener('click', function() {
+                    console.log('hey');
+                    if(document.querySelector("#file-input").files.length == 0) {
+                        alert('Error : No file selected');
+                        return;
+                    }
+
+                    // fichier selectionne 
+                    let file = document.querySelector("#file-input").files[0];
+
+                    // new FileReader object
+                    let reader = new FileReader();
+
+                    // fichier charge
+                    reader.addEventListener('load', function(e) {
+                       // contenu
+                        let text = e.target.result;
+                        
+                        console.log('file loaded');
+                        $.getJSON('/machine_a_laver', 
+                        {
+                        data : text,
+                        }, 
+                        function(data) {
+                            console.log(data)
+                            //document.querySelector("#file_contents").textContent = data
+                            $("#result").text(data.result);
+                        });
+
+                    });
+
+                    // event fired when file reading failed
+                    reader.addEventListener('error', function() {
+                        alert('Error : Failed to read file');
+                    });
+
+                    //read file as text file
+                    reader.readAsText(file);
+
+                    return false;
+                    }
+                );
+                console.log('end');
+            });
+        </script>
+        <!--<script type="module" src="read_file.js"></script>-->
+    </body>
+</html>
