@@ -2,18 +2,17 @@ from flask import Flask, jsonify, render_template, request
 import json
 import ast
 from pathlib import Path
-import src.controller.controller as ctrl
+import services.src.controller.controller as ctrl
 
 
 def get_path():
     p = Path.cwd()
-    #app.logger.info(p)
     p = p.parent.parent / 'front' / 'templates' 
     return str(p)
 
 path_template = get_path()
-
-app = Flask(__name__, static_url_path='', template_folder=path_template)
+#static_url_path='/templates/static', template_folder=path_template
+app = Flask(__name__)
 
 @app.route('/machine_a_laver')
 def moteur():
@@ -22,8 +21,13 @@ def moteur():
     res = ctrl.main(data)
     return jsonify(result=res)
 
+# @app.route('/templates/static')
+# def css():
+#     return 0
+
 @app.route('/')
 def index():
+    #app.logger.info(app.template_folder)
     #url = url_for('static', filename='s.js')
     return render_template('C3PO_front.html')
     #return json.dumps(plop())

@@ -12,7 +12,7 @@ class falco_M_computer:
         self.vaisseau_data = vaisseau_data
         self.empire_data = empire_data
         db_path = Path.cwd()
-        db_path = db_path.parent / 'database' 
+        db_path = db_path.parent.parent / 'database' 
         self.requetor = universe_requetor(db_path / vaisseau_data['routes_db'])
         self.dico = {}
 
