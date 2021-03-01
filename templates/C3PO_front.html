@@ -4,70 +4,37 @@
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title> StarWars RgOne</title>
-        <!-- before link-->
-        <link rel="stylesheet" href="{{ url_for('static', filename='styles/test2.css') }}" type="text/css" >
-        <!--after link-->
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}" type="text/css" >
+        <img id=c3po src="{{ url_for('static', filename='img/c3po.png') }}" alt="c3po" style="display: none" />
     </head>
     <body>
         <h1>
-            PLOP ?
+            Will Han and his crew save Endor from total destruction ?
         </h1>
         <script src="https://code.jquery.com/jquery-3.5.1.js"> </script>
+        <div id=screen>
+            <p id=console> 
+                <span id=loader></span><br>
+                <span id=result></span><br>
+                <span id=answer></span>
 
-        <p><input type=file id=file-input size=5 name=data>
+            <pre id=displayer>
+                <span id=print_file></span>
+            </pre>
+        </div>
+
+        <div id=roadmap>
+            <pre id=road></pre>
+        </div>
         
-        <p><button href=# id="read-button">Intercept File</button>
-        <p><span id=result></span>
+        <p id=interface>
+            <input type=file id=file-input size=5 name=data style="display: none;" accept=".json " onchange="fileloaded()">
+            <input type="button" id=intercept-button value="intercept file" onclick="document.getElementById('file-input').click();" />
+            <button href=# id="read-button" onclick="readfile()">Analyse File</button>
+
+
+        <script src= "{{ url_for('static', filename='eventlistener.js') }}" type="text/javascript" charset="utf-8"></script>
         
-
-
-        <script type="text/javascript">
-            $(function(){
-                document.querySelector("#read-button").addEventListener('click', function() {
-                    console.log('hey');
-                    if(document.querySelector("#file-input").files.length == 0) {
-                        alert('Error : No file selected');
-                        return;
-                    }
-
-                    // fichier selectionne 
-                    let file = document.querySelector("#file-input").files[0];
-
-                    // new FileReader object
-                    let reader = new FileReader();
-
-                    // fichier charge
-                    reader.addEventListener('load', function(e) {
-                       // contenu
-                        let text = e.target.result;
-                        
-                        console.log('file loaded');
-                        $.getJSON('/machine_a_laver', 
-                        {
-                        data : text,
-                        }, 
-                        function(data) {
-                            console.log(data)
-                            //document.querySelector("#file_contents").textContent = data
-                            $("#result").text(data.result + '%');
-                        });
-
-                    });
-
-                    // event fired when file reading failed
-                    reader.addEventListener('error', function() {
-                        alert('Error : Failed to read file');
-                    });
-
-                    //read file as text file
-                    reader.readAsText(file);
-
-                    return false;
-                    }
-                );
-                console.log('end');
-            });
-        </script>
         <!--<script type="module" src="read_file.js"></script>-->
     </body>
 </html>

@@ -1,0 +1,90 @@
+@font-face {
+    font-family: 'starwars';
+    src: url('polices/starwars/STARWARS.eot');
+    src: url('polices/starwars/STARWARS.ttf');
+    src: url('polices/starwars/STARWARS.svg');
+    src: url('polices/starwars/STARWARS.woff');
+}
+
+@font-face {
+    font-family: 'displayer';
+    src: url('polices/displayer/Alien-Encounters-Regular.ttf');
+}
+
+@font-face {
+    font-family:  'console';
+    src: url('polices/console/Android101.otf');
+    src: url('polices/console/Android101.ttf');
+}
+
+h1 {
+  color: yellow;
+  font-size: 5em;
+  font-family: 'starwars';
+}
+
+#screen{
+    display: flex;
+    justify-content:center;
+    height: 40%;
+}
+
+#console {
+    width: 40%;
+    height: 90%;
+    padding: 3px;
+    margin: 3px;  
+    border-radius: 7px; 
+
+    overflow: auto;
+    word-wrap: break-word;
+
+    background-color: #3a3a3a;
+
+    color: #038e03;
+    font-family: 'console';
+}
+
+#displayer {
+    width: 40%;
+    height: 90%;
+    padding: 3px;
+    margin: 3px;  
+    border-radius: 7px; 
+
+    overflow: auto;
+    word-wrap: break-word;
+
+    background-color: #3a3a3a;
+
+    color: #c70000;
+    font-family: 'displayer';
+}
+
+#roadmap {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content:center;
+}
+
+#road{
+    height:100%;
+    width:80%;
+    padding: 3px;
+    margin: 3px;  
+    border-radius: 7px; 
+
+    overflow: auto;
+    word-wrap: break-word;
+
+    background-color: #3a3a3a;
+
+    color: #81c5ea;
+    font-family: 'displayer';
+}
+
+body{
+  height: 100vh;
+  background-color: black
+}

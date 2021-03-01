@@ -18,12 +18,9 @@ app = Flask(__name__)
 def moteur():
     data = request.args.get('data', type=str)
     data = ast.literal_eval(data)
-    res = ctrl.main(data)
-    return jsonify(result=res)
+    res, path = ctrl.main(data)
+    return jsonify(result=[res, path])
 
-# @app.route('/templates/static')
-# def css():
-#     return 0
 
 @app.route('/')
 def index():

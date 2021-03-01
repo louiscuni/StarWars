@@ -3,7 +3,6 @@ from src.ressource.computer import *
 from pathlib import Path
 
 path = Path.cwd()
-print('plop', path)
 vaisseau = read_file(path / 'services/src/default_file/millenium-falcon.json')
 
 def main(empire, vaisseau=vaisseau):
@@ -11,4 +10,5 @@ def main(empire, vaisseau=vaisseau):
     rob.build_dico()
     res = rob.get_min_rencontre()
     res = proba_of_wining(res)
-    return res*100
+    path = rob.get_best_path()
+    return res*100, path

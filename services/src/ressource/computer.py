@@ -12,7 +12,7 @@ class falco_M_computer:
         self.vaisseau_data = vaisseau_data
         self.empire_data = empire_data
         db_path = Path.cwd()
-        db_path = db_path.parent.parent / 'database' 
+        db_path = db_path / 'services/database' 
         self.requetor = universe_requetor(db_path / vaisseau_data['routes_db'])
         self.dico = {}
 
@@ -104,13 +104,25 @@ class falco_M_computer:
 
 
     def get_min_rencontre(self):
+        #return the min number of danger encontered
         endor = self.dico['Endor']
         min_r = 42000#pas ouf
-        #print(endor)
         for day in endor.keys():
             if day != 'end_day':
                 if endor[day]['danger'] < min_r:
                     min_r = endor[day]['danger']
+        return min_r
+
+    def get_best_path(self):
+    #return the best path to endor
+        endor = self.dico['Endor']
+        min_r = 42000#pas ouf
+        day_r = -1
+        for day in endor.keys():
+            if day != 'end_day':
+                if endor[day]['danger'] < min_r:
+                    min_r = endor[day]['danger']
+                    day_r = day
                 # if endor[day]['danger'] == 0:
                 #     print(day, endor[day])
-        return min_r
+        return endor[day_r]['last_planet']
