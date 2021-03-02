@@ -97,10 +97,10 @@ Sur windows :
 Sur Mac :
 **python3 run.py**
 
-### How to uses Front
-La fenêtre de droite est la console où l'équipage réagit. La fenêtre de droite est le fichier d'input et la fenêtre du bas est le chemin à emprunter.  
-Pour rentrer un nouveaux fichier de danger, appuyer sur le bouton **"intercept file"**.
-Pour analyser le fichier et obtenir la probabilité de réussite, appuyer sur le bouton **"analyse file"**
+### How to use Front
+La fenêtre de gauche est la console où l'équipage réagit. La fenêtre de droite affiche le fichier d'input et la fenêtre du bas est le chemin à emprunter.  
+Pour rentrer un nouveaux fichier de danger, appuyez sur le bouton **"intercept file"**.
+Pour analyser le fichier et obtenir la probabilité de réussite, appuyez sur le bouton **"analyse file"**.
 
 ### Appeler la ligne de commande
 **give-me-the-odds  ``path/to/file/vaisseau.json``  ``path/to/file/danger.json``**
