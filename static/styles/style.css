@@ -66,6 +66,8 @@ h1 {
     height: auto;
     display: flex;
     justify-content:center;
+    font-family: 'displayer';
+    color: #81c5ea;
 }
 
 #road{
@@ -79,9 +81,8 @@ h1 {
     word-wrap: break-word;
 
     background-color: #3a3a3a;
-
-    color: #81c5ea;
     font-family: 'displayer';
+    color: #81c5ea;
 }
 
 body{
