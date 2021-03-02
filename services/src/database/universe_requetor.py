@@ -1,6 +1,8 @@
 import sqlite3 as sql
 from src.ressource.utils import *
 
+
+#Object to request database 
 class universe_requetor:
     table = ['routes']
     routes_columns = ['ORIGIN', 'DESTINATION', 'TRAVEL_TIME']
@@ -24,7 +26,7 @@ class universe_requetor:
             planet_acces += self.cursor.fetchall()
             self.cursor.execute("SELECT ORIGIN, TRAVEL_TIME FROM routes WHERE DESTINATION=(:DESTINATION)", {'DESTINATION' : planet} )
             planet_acces += self.cursor.fetchall()
-        planet_acces += [('refuel', 1)]
+        planet_acces += [('refuel', 1)]#always possible to stay on planet
         return planet_acces
 
     def get_all_planets(self):
@@ -32,8 +34,8 @@ class universe_requetor:
         res = []
         with self.connection:
             self.cursor.execute("""SELECT DESTINATION FROM routes
-                             UNION 
-                             SELECT ORIGIN FROM routes""" )
+                                 UNION 
+                                 SELECT ORIGIN FROM routes""" )
             res += self.cursor.fetchall()
         res = tabOfTuple_to_tab(res)
         return res
@@ -44,7 +46,3 @@ class universe_requetor:
             self.cursor.execute("SELECT * FROM routes")
             edges += self.cursor.fetchall()
         return edges
-
-    def db_ok():
-        #check if db is good
-        return 0

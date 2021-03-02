@@ -5,7 +5,6 @@
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title> StarWars RgOne</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}" type="text/css" >
-        <img id=c3po src="{{ url_for('static', filename='img/c3po.png') }}" alt="c3po" style="display: none" />
     </head>
     <body>
         <h1>
@@ -30,11 +29,10 @@
         <p id=interface>
             <input type=file id=file-input size=5 name=data style="display: none;" accept=".json " onchange="fileloaded()">
             <input type="button" id=intercept-button value="intercept file" onclick="document.getElementById('file-input').click();" />
-            <button href=# id="read-button" onclick="readfile()">Analyse File</button>
+            <button href=# id="read-button" onclick="controller_front()">Analyse File</button>
 
 
         <script src= "{{ url_for('static', filename='eventlistener.js') }}" type="text/javascript" charset="utf-8"></script>
         
-        <!--<script type="module" src="read_file.js"></script>-->
     </body>
 </html>

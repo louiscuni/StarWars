@@ -2,6 +2,8 @@ import sys
 from src.ressource.computer import *
 from src.ressource.utils import *
 
+#fichier pour CLI
+
 def main():
     vaisseau = sys.argv[1]
     empire = sys.argv[2]

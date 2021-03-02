@@ -2,7 +2,9 @@ from src.ressource.utils import *
 from src.ressource.computer import *
 from pathlib import Path
 
-path = Path.cwd()
+#file called by run.py
+
+path = Path.cwd()#= ~/dataiku
 vaisseau = read_file(path / 'services/src/default_file/millenium-falcon.json')
 
 def main(empire, vaisseau=vaisseau):

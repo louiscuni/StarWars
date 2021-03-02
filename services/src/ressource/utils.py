@@ -2,6 +2,7 @@ import json
 
 ###MATHS###
 def proba_of_wining (k):
+    #return a probability (0-1) based on a Math formula
     res = 0
     if k < 1000:
         for i in range(k):
@@ -33,18 +34,22 @@ def safest(list_p):
     return res
 
 def tabOfTuple_to_tab(tab):
+    #transform tuple array to array
     res = []
     for i in tab:
         res.append(i[0])
     return res
 
 def tab_to_dico(tab):
+    #transforme array to a dico of dico indexed on array element 
     res = {}
     for i in tab:
         res[i] = {}
     return res
 
 ###PARETO POINT###
+#pareto front multi objectif concept, it represent the set of point that are dominant, eg no points are better than them
+
 def build_pareto(list_p):
     #return a list of possibiliies that are pareto dominant
     res = [list_p[0]]
@@ -68,7 +73,3 @@ def update_pareto(list_p, possibility):
             res.append(p)
     return res
 
-
-
-# l = [{'danger' : 4, 'fuel' : 1}, {'danger' : 1, 'fuel' : 2}, {'danger' : 7, 'fuel' : 4}, {'danger' : 3, 'fuel' : 5}, {'danger' : 5, 'fuel' : 7} ]
-# print(build_pareto(l))
